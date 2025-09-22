@@ -6,6 +6,8 @@ const path = require('path');
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req,res) => res.sendFile(__dirname + '/public/index.html'));
+
+// Implement your solution for handeling the eventsBatch
 app.post('/api/events', (req, res) => {
     res.status(200);
     res.json({status:'success'});

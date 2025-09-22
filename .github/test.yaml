@@ -16,4 +16,4 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: cd tests; ./run_tests.sh
+        run: npm test
