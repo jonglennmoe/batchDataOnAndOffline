@@ -1,45 +1,16 @@
-export {};
-import { Event } from "../src/classes/event";
-import setEvent from "./event/handleEvents";
 
-const draw = () => {
-  if (typeof document !== 'undefined') {
+const LOCAL_STORAGE_KEY: string = 'userEvents';
+const NUMBER_OF_EVENTS_BEFORE_BATCH = 5;
+const INTERVAL_BETWEEN_TRYING_TO_BATCH = 1000 * 60;
 
-    let p = document.createElement('p');
-    let link = document.createElement('a');
-    link.setAttribute('href', "javascript:;")
-    link.textContent = 'Add Event Type 1';
-    p.appendChild(link);
-    document.body.appendChild(p);
-    link.addEventListener("click", function (e) {
-      setEvent({
-        eventName: "Event Type 1",
-        eventType: "clickEvent"
-      });
-    });
+let events = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 
-    let p2 = document.createElement('p');
-
-    let link2 = document.createElement('a');
-    link2.setAttribute('href', "javascript:;");
-    link2.textContent = 'Add Event With different data';
-    p2.appendChild(link2);
-    document.body.appendChild(p2);
-    link2.addEventListener("click", function (e) {
-      setEvent({
-        eventType: "Event Something Different",
-        somethingElse: 'Something Else',
-        extraSubdata: {
-          subDataName: 'My subDatadata',
-          subData: {
-            thisCanTake: 'Anything'
-          }
-        },
-        whatDidYouDo: "click"
-      });
-    });
-
-
-  }
+@@ -40,4 +41,7 @@ const sendEventsToApi = () => {
+}).catch((error) => {
+console.log(error)
+});
 };
-draw();
+};
+
+batchEvents();
+setInterval(batchEvents, INTERVAL_BETWEEN_TRYING_TO_BATCH);
