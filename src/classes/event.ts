@@ -1,4 +1,4 @@
-export class Event {
+export class EventData {
   private static count: number = 0;
 
   // Change after your needs. In this case userId and timeStamp has default values.
@@ -11,7 +11,7 @@ export class Event {
     this.userId = userId;
     this.timestamp = timestamp;
 
-    Event.count++;
+    EventData.count++;
   }
 
   getEventData(): string {
@@ -27,10 +27,10 @@ export class Event {
   }
   
   getEventCount(): number {
-    return Event.count;
+    return EventData.count;
   }
 
   resetEventCount(): void {
-    Event.count = 0;
+    EventData.count = 0;
   }
 }

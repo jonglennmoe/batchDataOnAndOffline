@@ -1,5 +1,5 @@
 export {};
-import { Event } from "../src/classes/event";
+import { EventData } from "../src/classes/event";
 import setEvent from "./event/handleEvents";
 
 const draw = () => {

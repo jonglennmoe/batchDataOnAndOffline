@@ -1,3 +1,5 @@
+import { EventData } from "../classes/event";
+
 const LOCAL_STORAGE_KEY: string = 'userEvents';
 const NUMBER_OF_EVENTS_BEFORE_BATCH = 5;
 const INTERVAL_BETWEEN_TRYING_TO_BATCH = 1000 * 60;
@@ -5,7 +7,7 @@ const INTERVAL_BETWEEN_TRYING_TO_BATCH = 1000 * 60;
 let events = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
 
 export default function setEvent(data: any) {
-  events.push([new Event(data)]);
+  events.push([new EventData(data)]);
   window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(events));
   batchEvents();
 };
