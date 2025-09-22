@@ -1,47 +1,45 @@
-import { Event } from '../classes/event';
+export {};
+import { Event } from "../src/classes/event";
+import setEvent from "./event/handleEvents";
 
-const LOCAL_STORAGE_KEY: string = 'userEvents';
-const NUMBER_OF_EVENTS_BEFORE_BATCH = 5;
-const INTERVAL_BETWEEN_TRYING_TO_BATCH = 1000 * 60;
+const draw = () => {
+  if (typeof document !== 'undefined') {
 
-let events = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+    let p = document.createElement('p');
+    let link = document.createElement('a');
+    link.setAttribute('href', "javascript:;")
+    link.textContent = 'Add Event Type 1';
+    p.appendChild(link);
+    document.body.appendChild(p);
+    link.addEventListener("click", function (e) {
+      setEvent({
+        eventName: "Event Type 1",
+        eventType: "clickEvent"
+      });
+    });
 
-export default function setEvent(data: any) {
-  events.push([new Event(data)]);
-  window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(events));
-  batchEvents();
-};
+    let p2 = document.createElement('p');
 
-export function getEvents() {
-  return events;
-}
+    let link2 = document.createElement('a');
+    link2.setAttribute('href', "javascript:;");
+    link2.textContent = 'Add Event With different data';
+    p2.appendChild(link2);
+    document.body.appendChild(p2);
+    link2.addEventListener("click", function (e) {
+      setEvent({
+        eventType: "Event Something Different",
+        somethingElse: 'Something Else',
+        extraSubdata: {
+          subDataName: 'My subDatadata',
+          subData: {
+            thisCanTake: 'Anything'
+          }
+        },
+        whatDidYouDo: "click"
+      });
+    });
 
-export function batchEvents() {
-  console.log('trying to batch events. have', getEvents().length, 'events', 'to send');
-  if (getEvents().length > (NUMBER_OF_EVENTS_BEFORE_BATCH - 1) && window.navigator.onLine) {
-    sendEventsToApi();
+
   }
-}
-
-const resetEvents = () => {
-  window.localStorage.removeItem(LOCAL_STORAGE_KEY);
-  events = [];
 };
-
-
-const sendEventsToApi = () => {
-  // Simple example of the api call. Implement your own solution.
-  fetch("/api/events", {
-    method: "POST",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(getEvents())
-  }).then(res => {
-    console.log("response:", res);
-    resetEvents();
-  }).catch((error) => {
-    console.log(error)
-  });
-};
-
-batchEvents();
-setInterval(batchEvents, INTERVAL_BETWEEN_TRYING_TO_BATCH);
+draw();
