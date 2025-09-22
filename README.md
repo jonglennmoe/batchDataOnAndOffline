@@ -8,10 +8,25 @@ In this demo case we set values we always know we want in classes/event.ts (user
 
 
 
-###To use:
+###Setup:
 - Clone repo
 - > npm install
 - > npm start (will also run "npm build" and "npm test", not that in webpack mode is set to development)
 - > point browser to localhost:8081
 - > after adding 5 (can be configured in event/handleEvents.ts) and client is online the eventsBatch will be send to the api.
 
+###Usage:
+Some basic Git commands are:
+```
+import setEvent from "./event/handleEvents";
+
+// then call like this, could be click, onload or whereEver you need to track or save data.
+// the JSON data can include whatever you want, if you wnt to separate it into variables intead it must be added in the constructor in classes/event.ts
+
+setEvent({
+    eventName: "clickEvent",
+    eventType: "click"
+});
+
+```
+You can for instance use a submit event and save an entire form as an event. A usecase could be that you have an application that needs to work offline then you can just set the NUMBER_OF_EVENTS_BEFORE_BATCH to 1 so if online it will send it straight away and if offline it will send a batch once the user goes online again.
