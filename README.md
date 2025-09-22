@@ -8,14 +8,14 @@ In this demo case we set values we always know we want in classes/event.ts (user
 
 
 
-###Setup:
+### Setup:
 - Clone repo
 - > npm install
 - > npm start (will also run "npm build" and "npm test", not that in webpack mode is set to development)
 - > point browser to localhost:8081
 - > after adding 5 (can be configured in event/handleEvents.ts) and client is online the eventsBatch will be send to the api.
 
-###Usage:
+### Usage:
 Some basic Git commands are:
 ```
 import setEvent from "./event/handleEvents";
