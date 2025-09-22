@@ -1,0 +1,41 @@
+{
+  "name": "batchuserevents",
+  "version": "1.0.0",
+  "description": "TypeScript for batching events and collect if offline in order to batch when back online.",
+  "main": "index.js",
+  "scripts": {
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "build": "npm test && webpack -c webpack.config.ts --mode=development",
+    "start": "npm run build && node app.js",
+    "start-dev": "npm test && tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonglennmoe/batchUserEvents"
+  },
+  "keywords": [
+    "TypeScript",
+    "Javascript",
+    "UserEvents",
+    "Batch"
+  ],
+  "author": "jonglennmoe",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "jsdom": "^20.0.3",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^10.2.0",
+    "rimraf": "^6.0.1",
+    "ts-loader": "^9.5.4",
+    "ts-node": "^10.9.1",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "typescript": "^5.9.2"
+  }
+}
