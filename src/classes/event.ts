@@ -1,6 +1,7 @@
 export class Event {
   private static count: number = 0;
 
+  // Change after your needs. In this case userId and timeStamp has default values.
   constructor(
     public eventData: string,
     public userId: number = 9999,
@@ -24,11 +25,7 @@ export class Event {
   getEventTimestamp(): number {
     return this.timestamp;
   }
-
-  describe(): string {
-    return `This is ${this.userId} at ${this.timestamp}.`;
-  }
-
+  
   getEventCount(): number {
     return Event.count;
   }
