@@ -7,7 +7,7 @@ The data object can contain anything as long as it is valid JSON no restrictions
 
 For this we run a very simple ExpressJS server but it is only to be able for you to run it straight away (the api call will always return 200 OK). Implement any solution of your needs.
 
-In this demo case we set values we always know we want in classes/event.ts (userId and timeStamp) change the constructor in this class for it to suit your needs.
+In this demo case we set values we always know we want in classes/data.ts (userId and timeStamp) change the constructor in this class for it to suit your needs.
 
 ### Setup:
 - Make sure you have NODE (https://nodejs.org/) and NPM (https://www.npmjs.com/) installed.
@@ -16,26 +16,26 @@ In this demo case we set values we always know we want in classes/event.ts (user
 - > npm install
 - > npm start (will also run "npm build" and "npm test", not that in webpack mode is set to development)
 - > point browser to localhost:8081
-- > after adding 5 (can be configured in either classes/batch.ts or when creating new Batch()) and client is online the eventsBatch will be send to the api.
+- > after adding 5 (can be configured in either classes/batchData.ts or when creating new Batch()) and client is online the dataBatch will be send to the api.
 
 ### Usage:
-Some basic Git commands are:
+Examples on how to call the setDataEntry.
 ```
-// import setEvent.
-import setEvent from "./event/handleEvents";
+// import setDataEntry.
+import setDataEntry from "./data/handleData";
 
 // then call like this, could be click, onload or whereEver you need to track or save data.
 // the JSON data can includeanything as long as it is valid JSON 
 
-setEvent({
-    eventName: "clickEvent",
-    eventType: "click"
+setDataEntry({
+    name: "clickEvent",
+    type: "click"
 });
 
 // example with sub-objects.
 
-setEvent({
-    eventType: "Event Something Different",
+setDataEntry({
+    type: "Something Different",
     somethingElse: 'Something Else',
     extraSubdata: {
         subDataName: 'My subDatadata',
