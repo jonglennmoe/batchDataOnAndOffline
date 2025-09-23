@@ -1,14 +1,12 @@
 import { EventData } from "../classes/event";
+import { Batch } from "../classes/batch";
 
-const LOCAL_STORAGE_KEY: string = 'userEvents';
-const NUMBER_OF_EVENTS_BEFORE_BATCH = 5;
-const INTERVAL_BETWEEN_TRYING_TO_BATCH = 1000 * 60;
-
-let events = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+const batch = new Batch();
+let events = JSON.parse(window.localStorage.getItem(batch.getKey())) || [];
 
 export default function setEvent(data: any) {
   events.push([new EventData(data)]);
-  window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(events));
+  window.localStorage.setItem(batch.getKey(), JSON.stringify(events));
   batchEvents();
 };
 
@@ -18,14 +16,14 @@ export function getEvents() {
 
 export function batchEvents() {
   console.log('Trying to send data. Have', getEvents().length, 'events to send');
-  if (getEvents().length > (NUMBER_OF_EVENTS_BEFORE_BATCH - 1) && window.navigator.onLine) {
+  if (getEvents().length > (batch.getMinEventsToBatch() - 1) && window.navigator.onLine) {
     console.log('Sending data', events);
     sendEventsToApi();
   }
 }
 
 const resetEvents = () => {
-  window.localStorage.removeItem(LOCAL_STORAGE_KEY);
+  window.localStorage.removeItem(batch.getKey());
   events = [];
 };
 
@@ -46,4 +44,4 @@ const sendEventsToApi = () => {
 
 
 batchEvents();
-setInterval(batchEvents, INTERVAL_BETWEEN_TRYING_TO_BATCH);
+setInterval(batchEvents, batch.getIntervalMillis());

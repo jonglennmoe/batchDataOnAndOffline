@@ -9,11 +9,13 @@ In this demo case we set values we always know we want in classes/event.ts (user
 
 
 ### Setup:
+- Make sure you have NODE (https://nodejs.org/) and NPM (https://www.npmjs.com/) installed.
 - Clone repo
+- Open Terminal and run the following commands.
 - > npm install
 - > npm start (will also run "npm build" and "npm test", not that in webpack mode is set to development)
 - > point browser to localhost:8081
-- > after adding 5 (can be configured in event/handleEvents.ts) and client is online the eventsBatch will be send to the api.
+- > after adding 5 (can be configured in either classes/batch.ts or when creating new Batch()) and client is online the eventsBatch will be send to the api.
 
 ### Usage:
 Some basic Git commands are:
@@ -29,4 +31,6 @@ setEvent({
 });
 
 ```
-You can for instance use a submit event and save an entire form as an event. A usecase could be that you have an application that needs to work offline then you can just set the NUMBER_OF_EVENTS_BEFORE_BATCH to 1 so if online it will send it straight away and if offline it will send a batch once the user goes online again.
+You can for instance use a submit event from a form and save an entire form as an eventData.
+
+A use case could be that you have an application that needs to work offline then you can just set the NUMBER_OF_EVENTS_BEFORE_BATCH to 1 so if online it will send it straight away and if offline it will send a batch once the user goes online again.
