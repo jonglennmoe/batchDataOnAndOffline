@@ -23,12 +23,26 @@ Some basic Git commands are:
 import setEvent from "./event/handleEvents";
 
 // then call like this, could be click, onload or whereEver you need to track or save data.
-// the JSON data can include whatever you want, if you wnt to separate it into variables intead it must be added in the constructor in classes/event.ts
+// the JSON data can include whatever you want as long as it is valid JSON 
 
 setEvent({
     eventName: "clickEvent",
     eventType: "click"
 });
+
+// example with sub-objects.
+
+setEvent({
+    eventType: "Event Something Different",
+    somethingElse: 'Something Else',
+    extraSubdata: {
+        subDataName: 'My subDatadata',
+        subData: {
+            thisCanTake: 'Anything',
+            key2: 'value 2'
+        }
+    }    
+}
 
 ```
 You can for instance use a submit event from a form and save an entire form as an eventData.
