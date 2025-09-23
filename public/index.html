@@ -24,10 +24,16 @@
                 margin: 1em auto;
             }
             a {
+                display:block;
                 color:#777;
             }
             a:hover {
                 color:#999;
+            }
+            em {
+                display:block;
+                color: #A9A9A9;
+                font-size:.7em;
             }
         </style>
     </head>
@@ -38,8 +44,53 @@
         </p>
         <p>
             Open you console and check the "network" and "application" to see how it is set data in localStorage and post to api/events when has 5 events.<br/>
-            (Can be configured in event/handleEvent.ts)
+            (Can be configured in classes/batch.ts or when initiating new Batch());
         </p>
+        <p>
+            <a href="javascript:;" class="batchClick" data-data='
+                {
+                    "eventName": "Event Type 1",
+                    "eventType": "clickEvent"
+                }
+            '>Add data to batch</a>
+            <em>
+                {
+                    "eventName": "Event Type 1",
+                    "eventType": "clickEvent"
+                }
+            </em>
+        </p>
+
+        <p>
+            <a href="javascript:;" class="batchClick" data-data='
+                {
+                    "eventType": "Event Something Different",
+                    "somethingElse": "Something Else",
+                    "extraSubdata": {
+                        "subDataName": "My subDatadata",
+                        "subData": {
+                            "thisCanTake": "Anything"
+                        }
+                    },
+                    "whatDidYouDo": "click"
+                }
+            '>Add different data to batch</a>
+            <em>
+                {
+                "eventType": "Event Something Different",
+                "somethingElse": "Something Else",
+                "extraSubdata": {
+                "subDataName": "My subDatadata",
+                "subData": {
+                "thisCanTake": "Anything"
+                }
+                },
+                "whatDidYouDo": "click"
+                }
+            </em>
+        </p>
+
+
         <script src="/js/bundle.js" defer type="module"></script>
     </body>
 </html>

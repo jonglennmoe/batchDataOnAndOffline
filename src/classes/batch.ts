@@ -1,8 +1,8 @@
 export class Batch {
 
   constructor(
-    public key: string = 'batchData',
-    public minEventsToBatch: number = 5,
+    private key: string = 'batchData',
+    private minEventsToBatch: number = 5,
     private intervalMillis: number = 1000 * 60,
   ) {
     this.key = key;
