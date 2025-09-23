@@ -20,6 +20,7 @@ In this demo case we set values we always know we want in classes/event.ts (user
 ### Usage:
 Some basic Git commands are:
 ```
+// import setEvent.
 import setEvent from "./event/handleEvents";
 
 // then call like this, could be click, onload or whereEver you need to track or save data.
