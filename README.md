@@ -1,12 +1,13 @@
 # batchUserEvents
-Simple implementation for collecting events in localStorage and batch them after a x amount of events has been collected. It will also collect events offline and send them to the server once online.
+Simple implementation for collecting dataEntries in localStorage and batch them after a x amount of events has been collected. It will also collect data entrie offline and send them to the server once online. Note, the default url for the api call is set to "/api/data" this can be changed in dataBatc.ts (update tests if this is done) or when initiating a new Batch();.
 
-For this we run a very simple ExpressJS server but it is only to be able for you to run it straight away. This will work with any server of your choice.
+This is ideal if you want to batch tracking (onclick, viewed etc.) or lets say you have data that need to be collected while offline and not lose it.
 
+The data object can contain anything as long as it is valid JSON no restrictions.
+
+For this we run a very simple ExpressJS server but it is only to be able for you to run it straight away (the api call will always return 200 OK). Implement any solution of your needs.
 
 In this demo case we set values we always know we want in classes/event.ts (userId and timeStamp) change the constructor in this class for it to suit your needs.
-
-
 
 ### Setup:
 - Make sure you have NODE (https://nodejs.org/) and NPM (https://www.npmjs.com/) installed.
@@ -24,7 +25,7 @@ Some basic Git commands are:
 import setEvent from "./event/handleEvents";
 
 // then call like this, could be click, onload or whereEver you need to track or save data.
-// the JSON data can include whatever you want as long as it is valid JSON 
+// the JSON data can includeanything as long as it is valid JSON 
 
 setEvent({
     eventName: "clickEvent",

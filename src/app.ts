@@ -1,6 +1,5 @@
 export {};
-import { EventData } from "../src/classes/event";
-import setEvent from "./event/handleEvents";
+import setDataEntry from "./data/handleData";
 
 const init = () => {
   if (typeof document !== 'undefined') {
@@ -8,8 +7,8 @@ const init = () => {
     console.log('batchLinks', batchLinks);
     batchLinks.forEach((link) => {
       link.addEventListener("click", function () {
-        const eventData = JSON.parse(link.getAttribute("data-data"));
-        setEvent(eventData);
+        const data = JSON.parse(link.getAttribute("data-data"));
+        setDataEntry(data);
       });
     });
 

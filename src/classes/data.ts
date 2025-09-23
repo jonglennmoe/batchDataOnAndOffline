@@ -1,36 +1,36 @@
-export class EventData {
+export class Data {
   private static count: number = 0;
 
   // Change after your needs. In this case userId and timeStamp has default values.
   constructor(
-    public eventData: string,
+    public data: string,
     public userId: number = 9999,
     private timestamp: number = Date.now(),
 ) {
-    this.eventData = eventData;
+    this.data = data;
     this.userId = userId;
     this.timestamp = timestamp;
 
-    EventData.count++;
+    Data.count++;
   }
 
-  getEventData(): string {
-    return `${this.eventData}`;
+  getDataEntry(): string {
+    return `${this.data}`;
   }
 
   getUserId(): number {
     return this.userId;
   }
 
-  getEventTimestamp(): number {
+  getDataTimestamp(): number {
     return this.timestamp;
   }
-  
-  getEventCount(): number {
-    return EventData.count;
+
+  getDataEntryCount(): number {
+    return Data.count;
   }
 
-  resetEventCount(): void {
-    EventData.count = 0;
+  resetDataEntryCount(): void {
+    Data.count = 0;
   }
 }

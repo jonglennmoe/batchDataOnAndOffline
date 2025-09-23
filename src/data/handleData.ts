@@ -1,0 +1,45 @@
+import { Data } from "../classes/data";
+import { DataBatch } from "../classes/dataBatch";
+
+const batch = new DataBatch();
+let data = JSON.parse(window.localStorage.getItem(batch.getKey())) || [];
+
+export default function setDataEntry(inDataObj: any) {
+  data.push([new Data(inDataObj)]);
+  window.localStorage.setItem(batch.getKey(), JSON.stringify(data));
+  batchData();
+}
+
+export function getData() {
+  return data;
+}
+
+export function batchData() {
+  console.log('Trying to send data. Have', getData().length, 'data entries to send');
+  if (getData().length > (batch.getMinEventsToBatch() - 1) && window.navigator.onLine) {
+    console.log('Sending dataBatch');
+    sendDataToApi();
+  }
+}
+
+export function resetData() {
+  window.localStorage.removeItem(batch.getKey());
+  data = [];
+}
+
+const sendDataToApi = () => {
+  // Simple example of the api call. Implement your own solution.
+  fetch(batch.getApiUrl(), {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(getData())
+  }).then(res => {
+    console.log("response:", res);
+    resetData();
+  }).catch((error) => {
+    console.log(error)
+  });
+};
+
+batchData();
+setInterval(batchData, batch.getIntervalMillis());
