@@ -49,4 +49,4 @@ setDataEntry({
 ```
 You can for instance use a submit event from a form and save an entire form as an eventData.
 
-A use case could be that you have an application that needs to work offline then you can just set the NUMBER_OF_EVENTS_BEFORE_BATCH to 1 so if online it will send it straight away and if offline it will send a batch once the user goes online again.
+A use case could be that you have an application that needs to work offline then you can just set the intervalMillis  to 1 when calling new DataBatch() or in classes/dataBarch.ts so if online it will send it straight away and if offline it will send a batch once the user goes online again.
