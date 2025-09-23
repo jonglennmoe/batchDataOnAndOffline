@@ -3,8 +3,8 @@ export class Data {
 
   // Change after your needs. In this case userId and timeStamp has default values.
   constructor(
-    public data: string,
-    public userId: number = 9999,
+    private data: string,
+    private userId: number = 9999,
     private timestamp: number = Date.now(),
 ) {
     this.data = data;

@@ -2,7 +2,7 @@ import { DataBatch } from '../src/classes/dataBatch';
 import { expect } from 'chai';
 
 
-describe('DataBatch tests', () => {
+describe('DataBatch', () => {
   it('batch should have correct default values', () => {
     const batch = new DataBatch();
     expect(batch.getKey()).to.equal('batchData');

@@ -1,7 +1,7 @@
 import { Data } from "../classes/data";
 import { DataBatch } from "../classes/dataBatch";
 
-const batch = new DataBatch();
+const batch: DataBatch = new DataBatch();
 let data = JSON.parse(window.localStorage.getItem(batch.getKey())) || [];
 
 export default function setDataEntry(inDataObj: any) {
@@ -10,22 +10,22 @@ export default function setDataEntry(inDataObj: any) {
   batchData();
 }
 
-export function getData() {
+const getData = () => {
   return data;
-}
+};
 
-export function batchData() {
+const batchData = () => {
   console.log('Trying to send data. Have', getData().length, 'data entries to send');
   if (getData().length > (batch.getMinEventsToBatch() - 1) && window.navigator.onLine) {
     console.log('Sending dataBatch');
     sendDataToApi();
   }
-}
+};
 
-export function resetData() {
+const resetData = () => {
   window.localStorage.removeItem(batch.getKey());
   data = [];
-}
+};
 
 const sendDataToApi = () => {
   // Simple example of the api call. Implement your own solution.

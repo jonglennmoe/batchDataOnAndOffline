@@ -2,7 +2,7 @@ import { Data } from '../src/classes/data';
 import { expect } from 'chai';
 
 
-describe('Data tests', () => {
+describe('Data', () => {
   it('getEventData should have correct value', () => {
     const event = new Data(JSON.stringify({data: 'testdata'}));
     expect(event.getDataEntry()).to.equal('{"data":"testdata"}');
