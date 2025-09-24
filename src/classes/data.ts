@@ -7,7 +7,7 @@ export class Data {
     private userId: number = 9999,
     private timestamp: number = Date.now()
 ) {
-    this.data: = data;
+    this.data = data;
     this.userId = userId;
     this.timestamp = timestamp;
 
