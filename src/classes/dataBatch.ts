@@ -4,7 +4,7 @@ export class DataBatch {
     private key: string = 'batchData',
     private minEventsToBatch: number = 5,
     private intervalMillis: number = 1000 * 60,
-    private apiUrl: string = '/api/data',
+    private apiUrl: string = '/api/data'
   ) {
     this.key = key;
     this.minEventsToBatch = minEventsToBatch;
@@ -43,5 +43,4 @@ export class DataBatch {
   setIntervalMillis(intervalMillis: number) {
     this.intervalMillis = intervalMillis;
   }
-
 }
