@@ -1,4 +1,4 @@
-# Batch Data Whne User Is Either Online or Offline
+# Batch Data When User Is Either Online or Offline
 Simple implementation for collecting dataEntries in localStorage and batch them after a x amount of events has been collected. It will also collect data entrie offline and send them to the server once online. Note, the default url for the api call is set to "/api/data" this can be changed in dataBatc.ts (update tests if this is done) or when initiating a new Batch();.
 
 This is ideal if you want to batch tracking (onclick, viewed etc.) or lets say you have data that need to be collected while offline and not lose it.
