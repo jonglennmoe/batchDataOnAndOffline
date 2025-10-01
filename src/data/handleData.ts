@@ -15,7 +15,7 @@ const getData = () => {
 };
 
 const batchData = () => {
-  console.log('Trying to send data. Have', getData().length, 'data entries to send');
+  console.log('Trying to send data. Have', getData().length, 'data entries to send. Will not send until we have', (batch.getMinEventsToBatch() - 1), 'to send');
   if (getData().length > (batch.getMinEventsToBatch() - 1) && window.navigator.onLine) {
     console.log('Sending dataBatch');
     sendDataToApi();
